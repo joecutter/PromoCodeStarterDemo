@@ -67,7 +67,7 @@ public class QuickBusApplicationTests {
 
     @Test
     public void whenFindByCode() {
-        String code = "8D19KN";
+        String code = "FZEHS1";
 //        PromoCodesEntity alex = new PromoCodesEntity(code);
 //        entityManager.persist(alex);
 //        entityManager.flush();
@@ -92,7 +92,7 @@ public class QuickBusApplicationTests {
 
     @Test
     public void whenValidate() {
-        String code = "8D19KN";
+        String code = "FZEHS1";
 
         ValidityModel validityModel = new ValidityModel();
         validityModel.setOrigin("Mombasa");
