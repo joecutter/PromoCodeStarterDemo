@@ -2,13 +2,15 @@
 
 ## APIS
 There are 5 endpoints defined:-
- # 1. /promo/generate/{amount}
-    - Use this to generate new promocode. As proposed each promo will have a certain amount, hence bind each generated promo will an amount. thus replace {amount} will a figure.
+ # 1. /promo/generate/{amount}/{event}
+    - Use this to generate new promocode. 
+    - As proposed each promo will have a certain amount, hence bind each generated promo with an amount. thus replace {amount} with a figure(int value).
+    - The {event} is to solve the problem of validity. So each newly created promocode will have a predefined destination when beign created.
     
  # 2. /promo/activate
     - This endpoint is to be used when Activating/Deactivating a promocode. Takes the model of the type:-
      {
-     "requestType":"activated", //requesttype can be either activated or deactivate
+     "requestType":"activated", //requesttype can be either "activated" or "deactivate"
      "req":"3PTEPX" // promocode 
      }
    
@@ -18,10 +20,12 @@ There are 5 endpoints defined:-
  # 4. /promo/all
     - This endpoint returns all promos. Either Activated or Deactivated.
     
- # 5. /promo/setDestination
+ # 5. /promo/validateride
      - This endpoint is to be used when testing the validity of a promocode. Takes the model of the type:-
     {
       "origin":"Nakuru", //takes the origin
       "destination":"mombasa", //takes the destination
       "promocode":"GH1LSI" //takes the promocode
     }
+    
+    - if the destination doesnt match the predefined event/destination of the promocode. Error is returned!
