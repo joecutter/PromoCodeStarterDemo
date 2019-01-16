@@ -23,7 +23,7 @@ public class GeneratePromoDaoImpl implements GeneratePromoDao {
     PromoCodesRepo promoCodesRepo;
 
     @Override
-    public PromoCodeResModel generateCodes(double amount) {
+    public PromoCodeResModel generateCodes(double amount,String event) {
         try{
             String code = generateRandomCodes().toUpperCase();
             log.info("Code is "+code);
@@ -39,13 +39,13 @@ public class GeneratePromoDaoImpl implements GeneratePromoDao {
             promoCodesEntity.setAmount(amount);
             promoCodesEntity.setPromocodes(code);
             promoCodesEntity.setStatus(false);
-            promoCodesEntity.setDestination("Mombasa");
+            promoCodesEntity.setDestination(event);
             promoCodesEntity.setExpiration(date);  //set to expire after a 7days
             promoCodesRepo.save(promoCodesEntity);
 
             return new PromoCodeResModel(code,amount,"Successful");
         }catch (Exception ex){
-
+            log.error(ex.getMessage(), ex);
         }
 
         return new PromoCodeResModel("Failed to generate",amount,"Failed");

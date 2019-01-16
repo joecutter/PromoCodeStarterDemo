@@ -30,10 +30,10 @@ public class PromoController {
     @Autowired
     ValidatePromoCodeDaoImpl validatePromoCodeDao;
 
-    @GetMapping(value = "/generate/{amount}")
+    @GetMapping(value = "/generate/{amount}/{event}")
     @ResponseBody
-    public GenerateCodesModel generatePromo(@PathVariable int amount){
-        return new GenerateCodesModel(200,generatePromoDao.generateCodes(amount));
+    public GenerateCodesModel generatePromo(@PathVariable int amount,@PathVariable String event){
+        return new GenerateCodesModel(200,generatePromoDao.generateCodes(amount,event));
     }
 
     @GetMapping(value = "/activate")
@@ -63,7 +63,7 @@ public class PromoController {
         return new PromoCodesModel(200,promoCodesEntity);
     }
 
-    @PostMapping(value = "/setDestination")
+    @PostMapping(value = "/validateride")
     @ResponseBody
     public Object getValidation(@RequestBody ValidityModel validityModel){
         if(!validatePromoCodeDao.findDestination(validityModel)){
