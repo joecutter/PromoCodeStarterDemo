@@ -1,5 +1,10 @@
 # quickbusdemo
 
+## RUN
+    1. Import the .sql file into your myqsl database
+    2. run the application
+    3. Ensure you have internet. Since there are some packages that will be install
+
 ## APIS
 There are 5 endpoints defined:-
  # 1. /promo/generate/{amount}/{event}
