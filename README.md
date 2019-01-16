@@ -1,4 +1,4 @@
-# quickbusdemo
+# PromoCodeStarterDemo
 
 ## RUN
     1. Import the .sql file into your myqsl database
