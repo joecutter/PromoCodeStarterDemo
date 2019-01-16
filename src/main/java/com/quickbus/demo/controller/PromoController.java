@@ -30,12 +30,19 @@ public class PromoController {
     @Autowired
     ValidatePromoCodeDaoImpl validatePromoCodeDao;
 
+
+    /**
+     * Endpoint for Generating new PromoCodes bound to amount and event/destination
+     **/
     @GetMapping(value = "/generate/{amount}/{event}")
     @ResponseBody
     public GenerateCodesModel generatePromo(@PathVariable int amount,@PathVariable String event){
         return new GenerateCodesModel(200,generatePromoDao.generateCodes(amount,event));
     }
 
+    /**
+     * Endpoint for Activating and Deactivating  PromoCodes
+     **/
     @GetMapping(value = "/activate")
     @ResponseBody
     public ResponseModel activateAndDeactivatePromo(@RequestBody ActivateDeactivateModel activateDeactivateModel){
@@ -49,6 +56,9 @@ public class PromoController {
         return new ResponseModel(403,desc);
     }
 
+    /**
+     * Endpoint for returning all Activated PromoCodes
+     **/
     @GetMapping(value = "/activate/all")
     @ResponseBody
     public PromoCodesModel getAllActiveCode(){
@@ -56,6 +66,10 @@ public class PromoController {
         return new PromoCodesModel(200,promoCodesEntity);
     }
 
+
+    /**
+     * Endpoint for returning all  PromoCodes
+     **/
     @GetMapping(value = "/all")
     @ResponseBody
     public PromoCodesModel getAllCode(){
@@ -63,6 +77,10 @@ public class PromoController {
         return new PromoCodesModel(200,promoCodesEntity);
     }
 
+
+    /**
+     * Endpoint for validating PromoCodes
+     **/
     @PostMapping(value = "/validateride")
     @ResponseBody
     public Object getValidation(@RequestBody ValidityModel validityModel){
